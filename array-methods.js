@@ -21,7 +21,6 @@ function overHundredThousand(account){
 var hundredThousandairs = dataset.bankBalances.filter(overHundredThousand);
 
 
-
 /*
   DO NOT MUTATE DATA.
 
@@ -40,7 +39,17 @@ var hundredThousandairs = dataset.bankBalances.filter(overHundredThousand);
   assign the resulting new array to `datasetWithRoundedDollar`
 */
 
-var datasetWithRoundedDollar = null;
+function roundAccount(account, state, rounded){
+  return {
+    amount: account,
+    state: state,
+    rounded: Math.round(account.amount)
+  };
+}
+
+var datasetWithRoundedDollar = dataset.bankBalances.map(roundAccount);
+
+
 
 /*
   DO NOT MUTATE DATA.
