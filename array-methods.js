@@ -20,6 +20,10 @@ function overHundredThousand(account){
 
 var hundredThousandairs = dataset.bankBalances.filter(overHundredThousand);
 
+//var hundredThousandairs = dataset.bankBalances
+                            // .filter(acct => acct.amount > 100000);
+
+
 
 /*
   DO NOT MUTATE DATA.
@@ -87,7 +91,30 @@ var datasetWithRoundedDime = dataset.bankBalances.map(roundToDime);
 // console.log(datasetWithRoundedDime);
 
 // set sumOfBankBalances to be the sum of all value held at `amount` for each bank object
-var sumOfBankBalances = null;
+// parse float in a map
+// then reduce
+// Math.round
+// .toFix(2)
+
+function strToNum(account, state){
+  return {
+    amount: parseFloat(account.amount),
+    state: state,
+  };
+
+}
+function sumOfAllBanks(startSum, account){
+  console.log(startSum);
+  console.log('startSum is a ', typeof startSum);
+  console.log(account.amount);
+  console.log('account is a ', typeof account.amount);
+  console.log('current sum is ', startSum + account.amount);
+  return startSum + account.amount;
+  // return startSum + account.amount;
+}
+
+var sumOfBankBalances = dataset.bankBalances.map(strToNum).reduce(sumOfAllBanks, 0);
+
 
 /*
   from each of the following states:
