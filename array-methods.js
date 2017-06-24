@@ -48,7 +48,7 @@ function roundAccount(account, state, rounded){
 }
 
 var datasetWithRoundedDollar = dataset.bankBalances.map(roundAccount);
-
+// console.log(datasetWithRoundedDollar);
 
 
 /*
@@ -74,7 +74,17 @@ var datasetWithRoundedDollar = dataset.bankBalances.map(roundAccount);
     }
   assign the resulting new array to `roundedDime`
 */
-var datasetWithRoundedDime = null;
+
+function roundToDime(account, state, roundedDime){
+  return {
+      amount: account,
+      state: state,
+      roundedDime: (Math.round(account.amount * 10) / 10)
+  };
+
+}
+var datasetWithRoundedDime = dataset.bankBalances.map(roundToDime);
+// console.log(datasetWithRoundedDime);
 
 // set sumOfBankBalances to be the sum of all value held at `amount` for each bank object
 var sumOfBankBalances = null;
